@@ -1,13 +1,18 @@
 import "./App.css";
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import React, { StrictMode } from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 import { ImageDataProvider } from "./context/ImageDataContext";
 import App from "./App.jsx";
 
-createRoot(document.getElementById("root")).render(
+const root = document.getElementById("root");
+
+ReactDOM.createRoot(root).render(
   <StrictMode>
     <ImageDataProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ImageDataProvider>
   </StrictMode>,
 );

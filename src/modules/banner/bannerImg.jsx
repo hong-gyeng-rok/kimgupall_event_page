@@ -1,4 +1,4 @@
-import { useImageData } from "../context/ImageDataContext";
+import { useImageData } from "../../context/ImageDataContext";
 import { useState, useEffect } from "react";
 
 export default function BannerImg() {
@@ -39,11 +39,12 @@ export default function BannerImg() {
   return (
     <article className=" w-xs flex justify-center">
       {bannerData && bannerData.length > 0 ? (
-        <div key={bannerData[count].id} className="rounded-lg p-2 shadow-xl/50">
+        <div className="rounded-lg p-2 shadow-xl/50">
           <img
             src={bannerData[count].url}
             alt={bannerData[count].title}
-            className="h-auto w-xs rounded object-cover"
+            className=" w-xs rounded object-cover"
+            loading="lazy"
           />
         </div>
       ) : (
