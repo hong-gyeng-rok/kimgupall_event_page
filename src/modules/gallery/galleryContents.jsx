@@ -40,8 +40,8 @@ export default function GalleryContents({ showDorpdown = false }) {
         {filteredImages.length > 0 ? (
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid flex" // flex 컨테이너 클래스
-            columnClassName="my-masonry-grid_column pl-4 bg-clip-padding " // 각 컬럼에 적용될 클래스 (pl-4는 gutter 역할)
+            className="my-masonry-grid flex gap-4" // flex 컨테이너 클래스 이미지 열 갭
+            columnClassName="my-masonry-grid_column gap-4 bg-clip-padding " // 각 컬럼에 적용될 클래스 (gap-4는 gutter 역할)
           >
             {filteredImages.map((image, index) => (
               <div key={index} className=" rounded shadow mb-4">
