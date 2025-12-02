@@ -49,6 +49,7 @@ export default function GalleryContents({ showDorpdown = false }) {
                   src={image.url}
                   alt={image.title}
                   className="w-full h-auto object-cover"
+                  fetchpriority="hight"
                 />
               </div>
             ))}

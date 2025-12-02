@@ -45,6 +45,7 @@ export default function BannerImg() {
             alt={bannerData[count].title}
             className=" w-xs rounded object-cover"
             loading="lazy"
+            fetchpriority="hight"
           />
         </div>
       ) : (
