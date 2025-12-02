@@ -12,10 +12,7 @@ import Gallery from "./page/gallery";
 function Layout() {
   return (
     <div>
-      <main style={{ padding: "1rem" }}>
-        {/* 이 Outlet 부분에 자식 라우트의 컴포넌트가 렌더링됩니다. */}
-        <Outlet />
-      </main>
+      <Outlet />
     </div>
   );
 }
