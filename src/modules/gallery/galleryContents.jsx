@@ -46,7 +46,7 @@ export default function GalleryContents({ showDorpdown = false }) {
             {filteredImages.map((image, index) => (
               <div key={index} className=" rounded shadow mb-4">
                 <img
-                  src={image.url}
+                  src={image.urlConverted}
                   alt={image.title}
                   className="w-full h-auto object-cover"
                   fetchpriority="hight"
