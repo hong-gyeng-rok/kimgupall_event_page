@@ -22,7 +22,7 @@ const navList = [
 
 export default function GalleryNavBtn() {
   return (
-    <div className=" flex flex-row w-xs justify-around">
+    <div className=" flex flex-row w-xs justify-around min-[350px]:hidden sm:hidden md:flex ">
       {navList.map((nav) =>
         nav.type === "style" ? (
           <button
