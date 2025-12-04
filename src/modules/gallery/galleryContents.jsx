@@ -1,24 +1,8 @@
 import Masonry from "react-masonry-css"; // react-masonry-css에서 임포트
-import { useState, useEffect } from "react";
-import SeasonDropdown from "./seasonDropdown";
 import { useImageData } from "../../context/ImageDataContext";
 
-export default function GalleryContents({ showDorpdown = false }) {
-  const [currentSeason, setCurrentSeason] = useState("25ss");
-  const [filteredImages, setFilteredImages] = useState([]);
+export default function GalleryContents() {
   const allimageData = useImageData();
-
-  useEffect(() => {
-    if (allimageData && allimageData[currentSeason]) {
-      setFilteredImages(allimageData[currentSeason]);
-    } else {
-      setFilteredImages([]);
-    }
-  }, [currentSeason, allimageData]);
-
-  const handleSeasonChange = (seasonValue) => {
-    setCurrentSeason(seasonValue);
-  };
 
   // 반응형 컬럼 개수 설정
   const breakpointColumnsObj = {
@@ -29,21 +13,22 @@ export default function GalleryContents({ showDorpdown = false }) {
     640: 1, // 640px 이하
   };
 
+  const withOutBannerImgs = allimageData
+    ? Object.keys(allimageData)
+        .filter((key) => key !== "banner")
+        .flatMap((key) => allimageData[key])
+    : [];
+
   return (
     <div>
-      {showDorpdown && (
-        <div className="p-4">
-          <SeasonDropdown onSelectSeason={handleSeasonChange} />
-        </div>
-      )}
       <div className="p-4 max-h-[58rem] overflow-y-auto ">
-        {filteredImages.length > 0 ? (
+        {withOutBannerImgs.length > 0 ? (
           <Masonry
             breakpointCols={breakpointColumnsObj}
             className="my-masonry-grid flex gap-4 h-screen" // flex 컨테이너 클래스 이미지 열 갭
             columnClassName="my-masonry-grid_column gap-4 bg-clip-padding " // 각 컬럼에 적용될 클래스 (gap-4는 gutter 역할)
           >
-            {filteredImages.map((image, index) => (
+            {withOutBannerImgs.map((image, index) => (
               <div key={index} className=" rounded shadow mb-4">
                 <img
                   src={image.urlConverted}

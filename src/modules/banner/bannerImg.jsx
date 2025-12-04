@@ -46,7 +46,7 @@ export default function BannerImg() {
             className=" w-xs rounded object-cover"
             loading="lazy"
             fetchPriority="high"
-          />
+          />{" "}
         </div>
       ) : (
         <p className="h-150">표시할 배너 데이터가 없습니다.</p>

@@ -12,53 +12,53 @@ const allLinks = [
     styleVariant: "default", // 스타일 변형을 지정
     path: "url",
   },
-  {
-    id: "market",
-    title: "Market",
-    bgColor: "#166EFF",
-    url: "https://naver.me/53lmTjmx",
-    styleVariant: "default",
-    path: "url",
-  },
-  {
-    id: "noteFolio",
-    title: "NoteFolio",
-    bgColor: "#3A84FF",
-    url: "https://notefolio.net/kimgupall98",
-    styleVariant: "default",
-    path: "url",
-  },
-  {
-    id: "pinterest",
-    title: "Pinterest",
-    bgColor: "#98BEFF",
-    url: "https://kr.pinterest.com/kimgupall98/",
-    styleVariant: "default",
-    path: "url",
-  },
-
-  // --- 'subtle' 스타일을 갖는 링크들 ---
-  {
-    id: "Subs",
-    title: "Subs",
-    url: "http://pf.kakao.com/_QGyxnn",
-    styleVariant: "subtle", // 'Subs'는 외부 링크이지만, 디자인은 'subtle'
-    path: "url",
-  },
-  {
-    id: "Gallery",
-    title: "Gallery",
-    url: "gallery", // 내부 페이지 경로
-    styleVariant: "subtle",
-    path: "path",
-  },
-  {
-    id: "About",
-    title: "About",
-    url: "#", // 내부 페이지 경로
-    styleVariant: "subtle",
-    path: "path",
-  },
+  // {
+  //   id: "market",
+  //   title: "Market",
+  //   bgColor: "#166EFF",
+  //   url: "https://naver.me/53lmTjmx",
+  //   styleVariant: "default",
+  //   path: "url",
+  // },
+  // {
+  //   id: "noteFolio",
+  //   title: "NoteFolio",
+  //   bgColor: "#3A84FF",
+  //   url: "https://notefolio.net/kimgupall98",
+  //   styleVariant: "default",
+  //   path: "url",
+  // },
+  // {
+  //   id: "pinterest",
+  //   title: "Pinterest",
+  //   bgColor: "#98BEFF",
+  //   url: "https://kr.pinterest.com/kimgupall98/",
+  //   styleVariant: "default",
+  //   path: "url",
+  // },
+  //
+  // // --- 'subtle' 스타일을 갖는 링크들 ---
+  // {
+  //   id: "Subs",
+  //   title: "Subs",
+  //   url: "http://pf.kakao.com/_QGyxnn",
+  //   styleVariant: "subtle", // 'Subs'는 외부 링크이지만, 디자인은 'subtle'
+  //   path: "url",
+  // },
+  // {
+  //   id: "Gallery",
+  //   title: "Gallery",
+  //   url: "gallery", // 내부 페이지 경로
+  //   styleVariant: "subtle",
+  //   path: "path",
+  // },
+  // {
+  //   id: "About",
+  //   title: "About",
+  //   url: "#", // 내부 페이지 경로
+  //   styleVariant: "subtle",
+  //   path: "path",
+  // },
 ];
 
 function Links() {
