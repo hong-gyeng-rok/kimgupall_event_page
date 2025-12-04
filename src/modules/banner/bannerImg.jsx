@@ -28,7 +28,7 @@ export default function BannerImg() {
 
   if (!allImageData) {
     return (
-      <div className="flex h-screen items-center justify-center bg-gray-900 text-white">
+      <div className="flex items-center justify-center bg-gray-900 text-white h-[25rem] w-[20rem]">
         이미지 데이터 로딩 중...
       </div>
     );
@@ -37,19 +37,19 @@ export default function BannerImg() {
   const bannerData = allImageData.banner;
 
   return (
-    <article className=" w-xs flex justify-center">
+    <article className=" w-xs flex justify-center items-center">
       {bannerData && bannerData.length > 0 ? (
-        <div className="rounded-lg p-2 shadow-xl/50">
+        <div className="rounded-lg p-2 shadow-xl/50 ">
           <img
             src={bannerData[count].urlConverted}
             alt={bannerData[count].title}
             className=" w-xs rounded object-cover"
             loading="lazy"
-            fetchPriority="hight"
+            fetchPriority="high"
           />
         </div>
       ) : (
-        <p>표시할 배너 데이터가 없습니다.</p>
+        <p className="h-150">표시할 배너 데이터가 없습니다.</p>
       )}
     </article>
   );

@@ -6,15 +6,15 @@ import { useImageData } from "../../context/ImageDataContext";
 export default function GalleryContents({ showDorpdown = false }) {
   const [currentSeason, setCurrentSeason] = useState("25ss");
   const [filteredImages, setFilteredImages] = useState([]);
-  const imageData = useImageData();
+  const allimageData = useImageData();
 
   useEffect(() => {
-    if (imageData && imageData[currentSeason]) {
-      setFilteredImages(imageData[currentSeason]);
+    if (allimageData && allimageData[currentSeason]) {
+      setFilteredImages(allimageData[currentSeason]);
     } else {
       setFilteredImages([]);
     }
-  }, [currentSeason, imageData]);
+  }, [currentSeason, allimageData]);
 
   const handleSeasonChange = (seasonValue) => {
     setCurrentSeason(seasonValue);
@@ -36,11 +36,11 @@ export default function GalleryContents({ showDorpdown = false }) {
           <SeasonDropdown onSelectSeason={handleSeasonChange} />
         </div>
       )}
-      <div className="p-4 max-h-175 overflow-y-auto">
+      <div className="p-4 max-h-[58rem] overflow-y-auto ">
         {filteredImages.length > 0 ? (
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid flex gap-4" // flex 컨테이너 클래스 이미지 열 갭
+            className="my-masonry-grid flex gap-4 h-screen" // flex 컨테이너 클래스 이미지 열 갭
             columnClassName="my-masonry-grid_column gap-4 bg-clip-padding " // 각 컬럼에 적용될 클래스 (gap-4는 gutter 역할)
           >
             {filteredImages.map((image, index) => (
@@ -48,8 +48,9 @@ export default function GalleryContents({ showDorpdown = false }) {
                 <img
                   src={image.urlConverted}
                   alt={image.title}
-                  className="w-full h-auto object-cover"
-                  fetchPriority="hight"
+                  className="w-full  object-cover"
+                  fetchPriority="high"
+                  loading="lazy"
                 />
               </div>
             ))}
