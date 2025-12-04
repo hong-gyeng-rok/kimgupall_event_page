@@ -4,7 +4,6 @@ import { Routes, Route, Outlet } from "react-router-dom";
 // 페이지 컴포넌트 임포트
 import Home from "./page/home";
 import Banner from "./page/banner";
-import Gallery from "./page/gallery";
 
 /**
  * 모든 페이지에 공통으로 적용될 레이아웃 컴포넌트
@@ -27,7 +26,6 @@ function App() {
         {/* Layout 컴포넌트를 부모로 하는 자식 라우트들 */}
         <Route index element={<Home />} />
         <Route path="banner" element={<Banner />} />
-        <Route path="gallery" element={<Gallery />} />
 
         {/* 일치하는 경로가 없을 때 보여줄 페이지 */}
         <Route path="*" element={<h2>페이지를 찾을 수 없습니다.</h2>} />

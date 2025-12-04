@@ -1,5 +1,4 @@
 import Banner from "./banner";
-import Gallery from "./gallery";
 import GalleryContents from "../modules/gallery/galleryContents";
 
 export default function Home() {
