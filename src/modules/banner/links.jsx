@@ -71,7 +71,7 @@ function Links() {
   );
 
   return (
-    <article className="flex flex-col gap-y-6">
+    <article className="flex flex-col gap-y-6 text-3xl">
       {/* 'default' 스타일 링크 렌더링 */}
       {defaultStyleLinks.map((link) => (
         <StyledLink key={link.id} link={link} />
