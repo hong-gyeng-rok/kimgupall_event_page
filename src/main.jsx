@@ -10,7 +10,7 @@ const root = document.getElementById("root");
 ReactDOM.createRoot(root).render(
   <StrictMode>
     <ImageDataProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/kimgupall_event_page">
         <App />
       </BrowserRouter>
     </ImageDataProvider>

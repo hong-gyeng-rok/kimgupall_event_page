@@ -5,6 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(() => {
   return {
     plugins: [react()],
-    base: "/hong-gyeng-rok.github.io/kimgupall_event_page/",
+    base: "/kimgupall_event_page/",
   };
 });
