@@ -12,7 +12,7 @@ export default function Banner() {
       <BannerImg />
       {allImageData && eventImgs.length > 0 ? (
         eventImgs.map((image, index) => (
-          <img key={index} src={image.url} alt={image.title} />
+          <img key={index} src={image.url} alt={image.title} className="w-xs h-auto"/>
         ))
       ) : (
         <p> 이미지가 없습니다. </p>
