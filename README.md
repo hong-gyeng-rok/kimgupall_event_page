@@ -1,16 +1,104 @@
-# React + Vite
+-----
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#  **kimgupall: 일러스트 포트폴리오 웹사이트**
 
-Currently, two official plugins are available:
+##  프로젝트 개요 및 동기
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+본 프로젝트는 **실제 일러스트 작가('kimgupall_98' 님)의 의뢰**를 받아 기획부터 디자인, 개발, 배포까지 전 과정을 주도한 개인 포트폴리오 웹사이트입니다. 단순한 작품 아카이빙을 넘어, **사용자 경험(UX) 개선**과 **유지보수성 확보**라는 명확한 목표 아래 **기술적 한계를 극복**하며 발전시킨 프로젝트입니다.
 
-## React Compiler
+| 구분 | 내용 |
+| :--- | :--- |
+| **프로젝트 목표** | 작가님의 일러스트 작품을 시즌별로 아카이빙하고, 빠르고 인터랙티브한 경험으로 제공 |
+| **개발 동기** | 기존 순수 JavaScript 프로젝트의 **성능 및 유지보수 한계** 극복 |
+| **주요 성과** | 1. **React 마이그레이션**을 통한 **유지보수성** 및 **확장성** 확보<br>2. **성능 최적화**를 통한 PageSpeed **41점 $\to$ 70점대** 향상 |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+협업 및 요구사항 분석 경험
 
-## Expanding the ESLint configuration
+    요구사항 도출: 작가님과의 정기적인 미팅을 통해 '시즌별 작품 아카이빙' 및 **'고해상도 원본 감상'**이라는 핵심 요구사항을 도출했습니다.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+    기술적 반영:
+
+        고해상도 요청 → 저해상도/고해상도 선택적 로딩 시스템 설계.
+
+        콘텐츠 업데이트 용이성 요청 → 데이터와 UI를 분리하여 JSON 파일만 수정하면 쉽게 작품 추가가 가능하도록 구조화.
+-----
+
+##  기술 스택 (Tech Stack)
+
+| 구분 | 기술 | 주요 사용 목적 및 특징 |
+| :--- | :--- | :--- |
+| **Frontend** | **React (Vite 기반)** | **컴포넌트 단위 설계** 및 **단방향 데이터 흐름** 확보. 빠른 개발 환경 구축. |
+| **State Mgt** | **React Context** | Props Drilling 회피 및 공통 데이터 **전역 상태 효율적 관리**. |
+| **Routing** | React Router DOM | SPA 환경에서 페이지 간 **매끄러운 탐색 경험** 제공. |
+| **Styling** | **Tailwind CSS**, PostCSS | 유틸리티 기반의 빠른 스타일링 및 **반응형 디자인** 구현. |
+| **Layout** | react-masonry-css | 다양한 크기의 이미지에 최적화된 **동적 그리드 레이아웃** 구현. |
+| **Deployment** | **GitHub Pages** | 서버 비용 절감 및 정적 웹사이트의 **빠르고 효율적인 배포** 환경 구축. |
+
+-----
+
+##  기술적 도전 및 해결 과정 (Core Achievements)
+
+이 프로젝트의 핵심은 초기 순수 JS 버전의 한계를 극복하고 기술적 깊이를 더하는 과정에 있습니다.
+
+### 1\. **함수 지향 JS $\to$ 컴포넌트 기반 React 마이그레이션 (유지보수성 확보)**
+
+  * **문제 인식:** 초기 순수 JavaScript로 구현 시, 모든 함수가 중앙 파일(`main.js`)에 과도하게 의존하여 **재귀적 의존성(Cyclic Dependency)** 오류가 빈번하게 발생. 함수 간의 의존성이 복잡하게 얽혀 **코드 분석 및 리팩토링 시간**이 과도하게 소요됨.
+  * **해결책:** **React**로 마이그레이션하며 \*\*단일 책임 원칙(SRP)\*\*에 기반한 컴포넌트 구조를 도입.
+      * `pages/`와 `modules/` 디렉토리를 분리하여 \*\*랜더링 책임(Page)\*\*과 \*\*기능 책임(Module)\*\*을 명확히 구분.
+      * **Props Drilling** 문제를 인지하고 **Context API**를 활용하여 데이터 흐름을 예측 가능하고 단순하게 개선.
+  * **결과:** **2주 만에 성공적으로 마이그레이션**을 완료, 코드의 **가독성과 확장성**을 획기적으로 향상.
+
+### 2\. **성능 최적화 및 제약 조건 극복 (UX 개선 및 비용 효율성)**
+
+  * **문제 인식:** 초기 PageSpeed 점수 **41점**으로, **UX 저하**가 심각. 원인은 **이미지의 절대적인 크기가 너무 큼**에 있었음. `Lazy Loading`만으로는 한계가 명확.
+  * **해결책:**
+      * **이미지 최적화:** 서버 환경이 없는 제약 조건( **`sharp` 미사용**)을 고려하여, 로컬 환경에서 **ImageMagick** 툴을 활용해 이미지를 **WebP 형식**으로 변환 및 압축.
+      * **확장성 확보:** **원본 이미지**를 별도 보존하고, 이미지 정보 JSON 파일에 **`converted` 경로**를 추가하여 **저해상도/고해상도 선택적 로딩** 시스템 구축. (클릭 시 원본 이미지 로드)
+  * **결과:** Pagespeed 점수를 **70점대**로 향상시켜 사용자 체감 성능을 대폭 개선했으며, \*\*성능과 이미지 품질(UX)\*\*이라는 상충되는 목표를 동시에 달성.
+
+-----
+
+##  프로젝트 아키텍처
+
+이 프로젝트는 \*\*단일 책임 원칙(SRP)\*\*을 준수하여 컴포넌트의 역할과 책임을 명확히 분리합니다.
+
+```
+src/
+├── page/
+│   ├── home.jsx         # 홈페이지 (모듈 조립)
+│   └── gallery.jsx      # 갤러리 페이지 (모듈 조립)
+├── modules/
+│   ├── banner/          # 배너 관련 부품
+│   └── gallery/         # 갤러리 관련 부품 (컨테이너, 내용, 버튼 등)
+├── context/
+│   └── ImageDataContext.jsx # 이미지 데이터 전역 관리 (Context API)
+└── App.jsx              # 라우팅 및 전역 레이아웃
+```
+
+  * **`page/`:** 각 페이지의 진입점. `module`들을 조립하여 완전한 페이지를 구성하는 **'조립 설명서'** 역할.
+  * **`module/`:** 특정 기능에 종속된 재사용 가능한 컴포넌트들의 집합으로 **'부품'** 역할. 기능 단위의 독립적인 개발 용이.
+  * **`context/`:** 이미지 데이터 및 테마와 같이 여러 컴포넌트에서 공유해야 하는 전역 상태를 **Props Drilling 없이** 관리.
+
+-----
+## 기술적 도전 및 해결 과정
+
+     트레이드오프 및 기술 부채 관리 (Trade-offs & Technical Debt)
+
+        TypeScript 미도입 결정:
+
+            초기 프로젝트의 신속한 구현 및 배포를 최우선 목표로 설정하여 TypeScript를 도입하지 않았습니다. 다만, 정적 타입의 필요성을 인지하고 있으며, 향후 프로젝트 확장 시 유지보수성 향상을 위해 TypeScript로의 점진적인 전환을 계획하고 있습니다.
+
+        서버 API 연동 부재:
+
+            클라이언트(학생)의 요청과 서버 비용 제로라는 제약 조건을 충족하기 위해 JSON 파일을 사용하여 데이터 관리를 구현했습니다. 실제 대규모 서비스라면 RESTful API 연동이 필수이며, 본 프로젝트에서는 Context API를 통한 데이터 흐름 관리에 집중하여 프론트엔드 아키텍처 역량을 강조했습니다.
+
+-----
+
+##  개발자 정보
+
+  * **이름:** 홍경록
+  * **GitHub:** https://github.com/hong-gyeng-rok
+  * **이메일:** honggyeonglog@gmail.com
+  * **개발 기간:** 2025.11.17 \~ 2025.12.08
+
+-----
