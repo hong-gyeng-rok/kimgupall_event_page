@@ -2,6 +2,10 @@ import { useEffect, useState, useRef } from "react";
 
 const seasons = [
   {
+    value: "25fw",
+    label: "25 Fall & Winter",
+  },
+  {
     value: "25ss",
     label: "25 Spring & Summer",
   },

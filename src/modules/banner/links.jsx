@@ -12,14 +12,14 @@ const allLinks = [
     styleVariant: "default", // 스타일 변형을 지정
     path: "url",
   },
-  {
-    id: "market",
-    title: "Market",
-    bgColor: "#166EFF",
-    url: "https://naver.me/53lmTjmx",
-    styleVariant: "default",
-    path: "url",
-  },
+  // {
+  //   id: "market",
+  //   title: "Market",
+  //   bgColor: "#166EFF",
+  //   url: "https://naver.me/53lmTjmx",
+  //   styleVariant: "default",
+  //   path: "url",
+  // },
   {
     id: "noteFolio",
     title: "NoteFolio",
@@ -52,13 +52,13 @@ const allLinks = [
     styleVariant: "subtle",
     path: "path",
   },
-  {
-    id: "About",
-    title: "About",
-    url: "#", // 내부 페이지 경로
-    styleVariant: "subtle",
-    path: "path",
-  },
+  // {
+  //   id: "About",
+  //   title: "About",
+  //   url: "#", // 내부 페이지 경로
+  //   styleVariant: "subtle",
+  //   path: "path",
+  // },
 ];
 
 function Links() {
@@ -78,7 +78,7 @@ function Links() {
       ))}
 
       {/* 'subtle' 스타일 링크 렌더링 */}
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-around">
         {subtleStyleLinks.map((link) => (
           <StyledLink key={link.id} link={link} />
         ))}
