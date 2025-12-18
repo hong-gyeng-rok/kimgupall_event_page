@@ -21,6 +21,8 @@ export default function GalleryContents() {
   const withOutBannerImgs = allimageData
     ? Object.keys(allimageData)
         .filter((key) => key !== "banner")
+        .filter((key) => key !== "eventImg")
+
         .flatMap((key) => allimageData[key])
     : [];
 
@@ -29,23 +31,23 @@ export default function GalleryContents() {
 
   return (
     <div>
-      <div className="p-4 max-h-screen overflow-y-auto ">
-        {withOutBannerImgs.length > 0 ? (
+      <div className=" min-[350px]:max-h-[85vh] md:max-h-[90vh] overflow-y-auto ">
+        {withOutBannerImgs && withOutBannerImgs.length > 0 ? ( //filteredImages라는 값은 GalleryContainer 함수에서 받아옴, 이를 통해 특정 시즌 이미지만 출력되도록함
           <Masonry
             breakpointCols={breakpointColumnsObj}
-            className="my-masonry-grid flex gap-4 h-screen" // flex 컨테이너 클래스 이미지 열 갭
+            className="my-masonry-grid flex gap-4" // flex 컨테이너 클래스 이미지 열 갭
             columnClassName="my-masonry-grid_column gap-4 bg-clip-padding " // 각 컬럼에 적용될 클래스 (gap-4는 gutter 역할)
           >
-            {withOutBannerImgs.map((image, index) => (
+            {withOutBannerImgs.map((image) => (
               <div
-                key={index}
-                className=" rounded shadow mb-4 cursor-pointer"
+                key={image.id}
+                className=" rounded shadow-xl mb-4 "
                 onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.urlConverted}
                   alt={image.title}
-                  className="w-full  object-cover"
+                  className="w-full  object-cover transition hover:-translate-y-1 hover:scale-110 hover:shadow-xl/70"
                   fetchPriority="high"
                   loading="lazy"
                 />
@@ -56,19 +58,17 @@ export default function GalleryContents() {
           <p className="text-black">No images found for the selected season.</p>
         )}
       </div>
-
-      {/* selectedImage가 있을 때만 Modal이 렌더링되도록 조건부 렌더링 추가 */}
       {selectedImage && (
         <Modal
           isOpen={selectedImage !== null}
           onRequestClose={() => setSelectedImage(null)} // 4. 모달 닫기
-          className="w-auto h-auto max-w-3xl flex flex-col items-center justify-center focus:outline-none gap-8"
+          className="w-auto max-w-2xl flex flex-col items-center justify-center focus:outline-none gap-8"
           overlayClassName=" fixed inset-0 bg-white flex items-center justify-center"
         >
           <img
             src={selectedImage.url} // 5. 선택된 이미지의 원본 URL 사용
             alt={selectedImage.title}
-            className="max-w-full max-h-full object-contain "
+            className="w-full h-full object-contain "
           />
           <button
             className="bg-white text-black ring-3 ring-black rounded-xl p-5 text-7xl w-3xl"
